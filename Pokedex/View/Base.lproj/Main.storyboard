@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4r-ZC-LTt">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pokédex-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="mnJ-af-YkV">
+                                <rect key="frame" x="132" y="-127" width="451" height="404"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wbL-Py-HOm">
+                                <rect key="frame" x="16" y="149" width="358" height="661"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wbL-Py-HOm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7L0-g0-j8N"/>
+                            <constraint firstItem="wbL-Py-HOm" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Y80-ox-d7j"/>
+                            <constraint firstItem="wbL-Py-HOm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="b0L-wg-fuq"/>
+                            <constraint firstItem="wbL-Py-HOm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gWS-UR-MbV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pokédex" id="moO-pS-Kh1"/>
+                    <connections>
+                        <outlet property="tableView" destination="wbL-Py-HOm" id="TCb-UB-4nz"/>
+                        <segue destination="ak3-ft-Qz9" kind="presentation" identifier="pokemonSegue" id="Tk2-tk-K4u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086.1538461538462" y="-36.255924170616112"/>
+        </scene>
+        <!--Pokemon View Controller-->
+        <scene sceneID="dyq-kQ-qja">
+            <objects>
+                <viewController id="ak3-ft-Qz9" customClass="PokemonViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WfA-f5-tw7">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="4aN-8V-TMg">
+                                <rect key="frame" x="205" y="253.66666666666663" width="240" height="187.33333333333337"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cE-M4-FoM">
+                                <rect key="frame" x="0.0" y="379" width="390" height="499"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swd-hU-e4S">
+                                        <rect key="frame" x="171.33333333333334" y="36" width="47.333333333333343" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="yoL-fS-T1c"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kj0-pp-NnN" userLabel="Line">
+                                        <rect key="frame" x="8" y="65" width="374" height="1"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="TCT-qd-e7m"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="SYs-sA-Bsc" userLabel="Weight Stack">
+                                        <rect key="frame" x="45" y="149" width="155" height="28.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltX-Fd-X6Q">
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="19"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwj-EH-k7q">
+                                                <rect key="frame" x="96" y="0.0" width="59" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="19"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="frb-VI-Ed6" userLabel="Height Stack">
+                                        <rect key="frame" x="45" y="105" width="151" height="28.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEJ-bh-iHo">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="19"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAd-tp-IO8">
+                                                <rect key="frame" x="96" y="0.0" width="55" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="19"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Swd-hU-e4S" firstAttribute="centerX" secondItem="1cE-M4-FoM" secondAttribute="centerX" id="5NA-Jg-8nP"/>
+                                    <constraint firstItem="frb-VI-Ed6" firstAttribute="leading" secondItem="1cE-M4-FoM" secondAttribute="leading" constant="45" id="Iqe-Yv-2U6"/>
+                                    <constraint firstItem="kj0-pp-NnN" firstAttribute="top" secondItem="Swd-hU-e4S" secondAttribute="bottom" constant="2" id="JRI-Zn-RRX"/>
+                                    <constraint firstItem="SYs-sA-Bsc" firstAttribute="leading" secondItem="frb-VI-Ed6" secondAttribute="trailing" constant="-151" id="YZr-2W-DAo"/>
+                                    <constraint firstItem="frb-VI-Ed6" firstAttribute="top" secondItem="kj0-pp-NnN" secondAttribute="top" constant="40" id="ZJH-m1-u0t"/>
+                                    <constraint firstItem="kj0-pp-NnN" firstAttribute="leading" secondItem="1cE-M4-FoM" secondAttribute="leading" constant="8" id="bV7-iI-ok9"/>
+                                    <constraint firstItem="Swd-hU-e4S" firstAttribute="top" secondItem="1cE-M4-FoM" secondAttribute="top" constant="36" id="cSG-Uo-0l5"/>
+                                    <constraint firstAttribute="trailing" secondItem="kj0-pp-NnN" secondAttribute="trailing" constant="8" id="cY9-iD-GG7"/>
+                                    <constraint firstItem="SYs-sA-Bsc" firstAttribute="top" secondItem="frb-VI-Ed6" secondAttribute="bottom" constant="15.333333333333329" id="uFB-HP-raE"/>
+                                    <constraint firstItem="SYs-sA-Bsc" firstAttribute="leading" secondItem="1cE-M4-FoM" secondAttribute="leading" constant="45" id="zxb-Xh-XhU"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ez-ST-ilR" userLabel="PokeImage">
+                                <rect key="frame" x="75" y="235.66666666666663" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="Ajk-kt-kqM"/>
+                                    <constraint firstAttribute="width" constant="240" id="lq0-e0-Gm5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Y-ND-Xoh">
+                                <rect key="frame" x="16" y="67" width="181" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="UZ7-N1-4UI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorGujarati-Bold" family="Kohinoor Gujarati" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipo 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOx-ty-7ok">
+                                <rect key="frame" x="16" y="107" width="54" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="C1K-Ax-lKF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorGujarati-Bold" family="Kohinoor Gujarati" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipo 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNo-QY-d9Q">
+                                <rect key="frame" x="106" y="107" width="55" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="9JJ-pH-QvE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorGujarati-Bold" family="Kohinoor Gujarati" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcG-Uh-oVM">
+                                <rect key="frame" x="274" y="67" width="83" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" name="KohinoorGujarati-Bold" family="Kohinoor Gujarati" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qhm-6K-Xwo"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qhm-6K-Xwo" firstAttribute="trailing" secondItem="gcG-Uh-oVM" secondAttribute="trailing" constant="33" id="6HX-lk-4qh"/>
+                            <constraint firstItem="9ez-ST-ilR" firstAttribute="top" secondItem="gcG-Uh-oVM" secondAttribute="bottom" constant="140" id="70l-tn-IHI"/>
+                            <constraint firstItem="MNo-QY-d9Q" firstAttribute="top" secondItem="W8Y-ND-Xoh" secondAttribute="bottom" constant="8" id="9JH-R2-6JB"/>
+                            <constraint firstItem="gcG-Uh-oVM" firstAttribute="leading" secondItem="MNo-QY-d9Q" secondAttribute="trailing" constant="113" id="Ay5-Ir-G0f"/>
+                            <constraint firstItem="dOx-ty-7ok" firstAttribute="top" secondItem="W8Y-ND-Xoh" secondAttribute="bottom" constant="8" id="CCy-kI-UHx"/>
+                            <constraint firstItem="4aN-8V-TMg" firstAttribute="leading" secondItem="Qhm-6K-Xwo" secondAttribute="leading" constant="205" id="Fa3-Tl-iV1"/>
+                            <constraint firstItem="gcG-Uh-oVM" firstAttribute="top" secondItem="Qhm-6K-Xwo" secondAttribute="top" constant="20" id="Ig1-Ko-siQ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1cE-M4-FoM" secondAttribute="bottom" constant="-91" id="JaO-GC-uX4"/>
+                            <constraint firstItem="9ez-ST-ilR" firstAttribute="centerX" secondItem="WfA-f5-tw7" secondAttribute="centerX" id="OpC-L2-Idw"/>
+                            <constraint firstItem="1cE-M4-FoM" firstAttribute="centerX" secondItem="9ez-ST-ilR" secondAttribute="centerX" id="Pry-45-OEZ"/>
+                            <constraint firstItem="1cE-M4-FoM" firstAttribute="leading" secondItem="WfA-f5-tw7" secondAttribute="leading" id="ZDH-4L-SqV"/>
+                            <constraint firstAttribute="trailing" secondItem="4aN-8V-TMg" secondAttribute="trailing" constant="-55" id="eFD-LA-W0V"/>
+                            <constraint firstItem="MNo-QY-d9Q" firstAttribute="leading" secondItem="dOx-ty-7ok" secondAttribute="trailing" constant="36" id="fKQ-yQ-miH"/>
+                            <constraint firstItem="W8Y-ND-Xoh" firstAttribute="leading" secondItem="Qhm-6K-Xwo" secondAttribute="leading" constant="16" id="hb2-vD-GQS"/>
+                            <constraint firstItem="gcG-Uh-oVM" firstAttribute="leading" secondItem="W8Y-ND-Xoh" secondAttribute="trailing" constant="77" id="i4W-AC-2bk"/>
+                            <constraint firstItem="Qhm-6K-Xwo" firstAttribute="bottom" secondItem="4aN-8V-TMg" secondAttribute="bottom" constant="346" id="qYu-xV-baw"/>
+                            <constraint firstItem="W8Y-ND-Xoh" firstAttribute="top" secondItem="WfA-f5-tw7" secondAttribute="topMargin" constant="20" id="sUo-sO-c59"/>
+                            <constraint firstItem="gcG-Uh-oVM" firstAttribute="leading" secondItem="W8Y-ND-Xoh" secondAttribute="trailing" constant="77" id="sgC-D5-H39"/>
+                            <constraint firstItem="dOx-ty-7ok" firstAttribute="leading" secondItem="Qhm-6K-Xwo" secondAttribute="leading" constant="16" id="sty-Bd-uIN"/>
+                            <constraint firstItem="1cE-M4-FoM" firstAttribute="top" secondItem="WfA-f5-tw7" secondAttribute="top" constant="379" id="wNy-kx-RoT"/>
+                            <constraint firstItem="9ez-ST-ilR" firstAttribute="leading" secondItem="Qhm-6K-Xwo" secondAttribute="leading" constant="75" id="y9c-xb-szE"/>
+                            <constraint firstItem="4aN-8V-TMg" firstAttribute="top" secondItem="gcG-Uh-oVM" secondAttribute="bottom" constant="158" id="ylr-zz-fCR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutView" destination="1cE-M4-FoM" id="VK2-MI-Zfq"/>
+                        <outlet property="heightLabel" destination="MAd-tp-IO8" id="agQ-hO-d6x"/>
+                        <outlet property="pokemonId" destination="gcG-Uh-oVM" id="Aon-Lq-hRA"/>
+                        <outlet property="pokemonImage" destination="9ez-ST-ilR" id="J92-iS-2Di"/>
+                        <outlet property="pokemonLabel" destination="W8Y-ND-Xoh" id="5sd-7I-7jo"/>
+                        <outlet property="pokemonType1" destination="dOx-ty-7ok" id="x7w-Ay-ciK"/>
+                        <outlet property="pokemonType2" destination="MNo-QY-d9Q" id="LQ7-dB-kcn"/>
+                        <outlet property="weightLabel" destination="Kwj-EH-k7q" id="Tzm-A5-4wd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QB2-fL-LP2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2001.5384615384614" y="-36.255924170616112"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9s2-AH-aoF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h4r-ZC-LTt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQh-4u-Pze">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BKE-hV-4Mh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ixs-lZ-ypC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="156.92307692307691" y="-36.255924170616112"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Pokeball" width="655" height="381"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

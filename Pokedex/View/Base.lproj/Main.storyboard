@@ -21,21 +21,34 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wbL-Py-HOm">
-                                <rect key="frame" x="16" y="149" width="358" height="661"/>
+                                <rect key="frame" x="16" y="157" width="358" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="NjC-4N-u5b">
+                                <rect key="frame" x="0.0" y="101" width="390" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="QdJ-pE-WJd"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wbL-Py-HOm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7L0-g0-j8N"/>
+                            <constraint firstItem="NjC-4N-u5b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jv7-Z1-6gP"/>
+                            <constraint firstItem="wbL-Py-HOm" firstAttribute="top" secondItem="NjC-4N-u5b" secondAttribute="bottom" id="Qns-EI-4Jf"/>
                             <constraint firstItem="wbL-Py-HOm" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Y80-ox-d7j"/>
-                            <constraint firstItem="wbL-Py-HOm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="b0L-wg-fuq"/>
                             <constraint firstItem="wbL-Py-HOm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gWS-UR-MbV"/>
+                            <constraint firstItem="NjC-4N-u5b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o8i-dS-4bO"/>
+                            <constraint firstItem="NjC-4N-u5b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="rdv-qU-KhG"/>
+                            <constraint firstItem="NjC-4N-u5b" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vRs-9F-NOw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pokédex" id="moO-pS-Kh1"/>
                     <connections>
+                        <outlet property="pokeballImage" destination="mnJ-af-YkV" id="xO9-gG-ByD"/>
+                        <outlet property="searchBar" destination="NjC-4N-u5b" id="i8d-vq-E92"/>
                         <outlet property="tableView" destination="wbL-Py-HOm" id="TCb-UB-4nz"/>
                         <segue destination="ak3-ft-Qz9" kind="presentation" identifier="pokemonSegue" id="Tk2-tk-K4u"/>
                     </connections>

@@ -7,12 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var pokeballImage: UIImageView!
     
     private var pokemonListVM: PokemonsListViewModel!
-    
+    var filteredPokemons: [Pokemons]!
     private var selectedPoke: Pokemons!
     
     override func viewDidLoad() {
@@ -21,13 +23,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PokemonCell", bundle: nil), forCellReuseIdentifier: "PokemonCell")
+        searchBar.delegate = self
         
         preparation()
         
     }
+ 
+}
 
+//MARK: - Table View Delegate
+extension ViewController{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemonListVM.pokemons.count
+        if filteredPokemons == nil {
+            return 0
+        } else{
+            return filteredPokemons.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,7 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.selectionStyle = .none
         cell.cellView.layer.cornerRadius = cell.frame.size.height / 5
         
-        let pokemonVM = pokemonListVM.pokemons[indexPath.row]
+        let pokemonVM = filteredPokemons[indexPath.row]
         
         cell.pokemonName.text = pokemonVM.name.capitalized
         
@@ -74,10 +86,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
-    
+}
+
+//MARK: - Segue
+extension ViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedPoke = pokemonListVM.pokemons[indexPath.row]
+        selectedPoke = filteredPokemons[indexPath.row]
         
         performSegue(withIdentifier: "pokemonSegue", sender: self)
     }
@@ -87,43 +102,50 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segue.identifier == "pokemonSegue" {
             if let destinationVC = segue.destination as? PokemonViewController {
                 
-                let url = selectedPoke.url
-                
-                PokemonSelectedApi().getSprite(url: url) { poke in
-                    
-                    destinationVC.pokemonImage.downloaded(from: poke.sprites.front_default)
-                    destinationVC.pokemonLabel.text = self.selectedPoke.name.capitalized
-                    destinationVC.pokemonType1.text = poke.types[0].type.name.capitalized
-                    destinationVC.pokemonType1.layer.cornerRadius = destinationVC.pokemonType1.frame.size.height / 3.0
-                    destinationVC.pokemonType1.layer.masksToBounds = true
-                    destinationVC.pokemonType1.backgroundColor = UIColor(hexString: "#808080", alpha: 0.4)
-                    
-                    if poke.types.count > 1 {
-                        destinationVC.pokemonType2.text = poke.types[1].type.name.capitalized
-                        destinationVC.pokemonType2.layer.cornerRadius = destinationVC.pokemonType1.frame.size.height / 3.0
-                        destinationVC.pokemonType2.layer.masksToBounds = true
-                        destinationVC.pokemonType2.backgroundColor = UIColor(hexString: "#808080", alpha: 0.4)
-                    } else {
-                        destinationVC.pokemonType2.isHidden = true
-                    }
-                    
-                    destinationVC.view.backgroundColor = UIColor(hexString: TypeColor.callCollor(type: poke.types[0].type.name), alpha: 1.0)
-                    destinationVC.pokemonId.text = "#\(poke.id)"
-                    destinationVC.weightLabel.text = "\(poke.weight)lbs"
-                    destinationVC.heightLabel.text = "\(poke.height * 10)cm"
-                    destinationVC.aboutView.layer.cornerRadius = destinationVC.aboutView.frame.size.height / 12
-                    destinationVC.aboutView.layer.masksToBounds = true
-                }
+                destinationVC.pokemon = selectedPoke
                 
             }
         }
-        
     }
-    
 }
 
+//MARK: - Scroll View
+extension ViewController {
+    //Objeto gira conforme o scroll view é scrollado
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let topOffset = scrollView.contentOffset.y
+        let angle = -topOffset * 2 * CGFloat(Double.pi / 720)
+        self.pokeballImage.transform = CGAffineTransform(rotationAngle: angle)
+    }
+}
 
+//MARK: - Search Bar
 extension ViewController{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredPokemons = []
+        
+        if searchText == "" {
+            filteredPokemons = pokemonListVM.pokemons
+        } else {
+            for poke in pokemonListVM.pokemons {
+                if poke.name.contains(searchText.lowercased()){
+                    filteredPokemons.append(poke)
+                }
+            }
+        }
+                      
+        self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+    }
+}
+
+//MARK: - Outras funções
+extension ViewController{
+    
     
     func preparation(){
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -134,7 +156,20 @@ extension ViewController{
         navigationController?.navigationBar.standardAppearance = appearence
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         
+        let image = UIImage()
+        
+        searchBar.backgroundImage = image
+        searchBar.backgroundColor = .clear
+        searchBar.barTintColor = .clear
+        
         pokemonListVM = PokemonsListViewModel()
+        
+        fullfillArray()
+    }
+    
+    func fullfillArray(){
+        
+        pokemonListVM.pokemons.removeAll()
         
         PokeAPI().getData { pokemon in
             for poke in pokemon{
@@ -142,9 +177,16 @@ extension ViewController{
                 
             }
             
+            self.filteredPokemons = self.pokemonListVM.pokemons
+            
             self.tableView.reloadData()
         }
+        
+        
+        
+        
     }
+    
 }
 
 
